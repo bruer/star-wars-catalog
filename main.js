@@ -272,18 +272,21 @@ function createList(typeOfList, resource) {
 }
 
 function updatePage(url) {
-    
+
     request(url).then(pageData => {
-        
+
         const getPeople = (list, person) => fillList(list, person, personItem)
 
         const getAllPeople = (list, url) => {
 
-            const searchPeople = (nextPage, list) => {
+            const searchPeople = (list, nextPageUrl) => {
 
-                if (nextPage) {
+                if (nextPageUrl) {
 
-                    request(nextPage).then(page => {
+                    const secureUrl = nextPageUrl.includes("https") ?
+                        nextPageUrl : nextPageUrl.replace("http", "https")
+
+                    request(secureUrl).then(page => {
 
                         fillList(list, page.results, personItem)
 
@@ -296,13 +299,14 @@ function updatePage(url) {
                             list.replaceWith(message)
                         }
 
-                        searchPeople(page.next, list)
+                        searchPeople(list, page.next)
+
                     })
                         .catch(error => console.log(error))
                 }
             }
 
-            searchPeople(url, list)
+            searchPeople(list, url)
 
             return list
         }
