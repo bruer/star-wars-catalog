@@ -272,9 +272,9 @@ function createList(typeOfList, resource) {
 }
 
 function updatePage(url) {
-
+    
     request(url).then(pageData => {
-
+        
         const getPeople = (list, person) => fillList(list, person, personItem)
 
         const getAllPeople = (list, url) => {
@@ -375,11 +375,11 @@ function updatePage(url) {
             const handleBtnEvent = ({ target }) => {
 
                 const property = target.getAttribute("class").split(" ").pop()
-                const pageUrl = pageData[property].replace("http", "https")
+                const pageUrl = pageData[property]
 
                 if (pageUrl) {
 
-                    updatePage(pageUrl)
+                    updatePage(pageUrl.replace("http", "https"))
 
                     nextBtn.removeEventListener("click", handleBtnEvent)
                     previousBtn.removeEventListener("click", handleBtnEvent)
