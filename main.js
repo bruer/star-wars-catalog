@@ -1,6 +1,12 @@
-function request(resource) {
+function request(url) {
 
-    const promise = fetch(resource)
+    console.log(url, url.includes("https"))
+
+    const secureUrl = url.includes("https") ? url : url.replace("http", "https")
+
+    console.log(secureUrl)
+
+    const promise = fetch(secureUrl)
         .then(response => response.json())
         .catch(error => console.log(error))
 
@@ -120,6 +126,8 @@ function infoItem(property) {
             info.classList.add("hidden")
 
             fetchProperty(value).then(infoList => {
+
+                // console.log(value)
 
                 infoList.classList.add("info-list", "hidden")
 
@@ -283,10 +291,10 @@ function updatePage(url) {
 
                 if (nextPageUrl) {
 
-                    const secureUrl = nextPageUrl.includes("https") ?
-                        nextPageUrl : nextPageUrl.replace("http", "https")
+                    // const secureUrl = nextPageUrl.includes("https") ?
+                    //     nextPageUrl : nextPageUrl.replace("http", "https")
 
-                    request(secureUrl).then(page => {
+                    request(nextPageUrl).then(page => {
 
                         fillList(list, page.results, personItem)
 
@@ -383,7 +391,8 @@ function updatePage(url) {
 
                 if (pageUrl) {
 
-                    updatePage(pageUrl.replace("http", "https"))
+                    updatePage(pageUrl)
+                    // updatePage(pageUrl.replace("http", "https"))
 
                     nextBtn.removeEventListener("click", handleBtnEvent)
                     previousBtn.removeEventListener("click", handleBtnEvent)
