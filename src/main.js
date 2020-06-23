@@ -9,7 +9,7 @@ function request(resource) {
 
 async function fetchFirstPage() {
 
-    const firstPageData = await request("https://swapi.dev/api/people/?page=1")
+    const firstPageData = await request("http://swapi.dev/api/people/?page=1")
 
     return firstPageData
 }
@@ -359,7 +359,7 @@ function updatePage(url) {
 
             const handleSelectEvent = ({ target }) => {
 
-                const pageUrl = `https://swapi.dev/api/people/?page=${target.value}`
+                const pageUrl = `http://swapi.dev/api/people/?page=${target.value}`
 
                 if (pageUrl) {
 
@@ -377,6 +377,8 @@ function updatePage(url) {
                 const property = target.getAttribute("class").split(" ").pop()
                 const pageUrl = pageData[property]
 
+                console.log(pageData, pageUrl)
+
                 if (pageUrl) {
 
                     updatePage(pageUrl)
@@ -393,7 +395,7 @@ function updatePage(url) {
                 const navigation = document.querySelector("nav")
                 const bottomOfContainer = document.querySelector("main .bottom")
 
-                const pageUrl = `https://swapi.dev/api/people/?search=${target.value}`
+                const pageUrl = `http://swapi.dev/api/people/?search=${target.value}`
 
                 if (target.value.length < 1) {
 
@@ -466,4 +468,4 @@ function updatePage(url) {
         .catch(error => console.log(error))
 }
 
-updatePage("https://swapi.dev/api/people/")
+updatePage("http://swapi.dev/api/people/")
