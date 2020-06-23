@@ -1,10 +1,10 @@
 function request(url) {
 
-    console.log(url, url.includes("https"))
+    // console.log(url, url.includes("https"))
 
     const secureUrl = url.includes("https") ? url : url.replace("http", "https")
 
-    console.log(secureUrl)
+    // console.log(secureUrl)
 
     const promise = fetch(secureUrl)
         .then(response => response.json())
@@ -43,7 +43,9 @@ async function fetchHomeworld(url) {
 
 async function fetchSpecies(url) {
 
-    const data = await request(url)
+    console.log(url, url[0])
+
+    const data = await request(url[0])
 
     const {
         name,
