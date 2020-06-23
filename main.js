@@ -1,10 +1,6 @@
 function request(url) {
 
-    // console.log(url, url.includes("https"))
-
     const secureUrl = url.includes("https") ? url : url.replace("http", "https")
-
-    // console.log(secureUrl)
 
     const promise = fetch(secureUrl)
         .then(response => response.json())
@@ -42,8 +38,6 @@ async function fetchHomeworld(url) {
 }
 
 async function fetchSpecies(url) {
-
-    console.log(url, url[0])
 
     const data = await request(url[0])
 
@@ -128,8 +122,6 @@ function infoItem(property) {
             info.classList.add("hidden")
 
             fetchProperty(value).then(infoList => {
-
-                // console.log(value)
 
                 infoList.classList.add("info-list", "hidden")
 
@@ -289,14 +281,11 @@ function updatePage(url) {
 
         const getAllPeople = (list, url) => {
 
-            const searchPeople = (list, nextPageUrl) => {
+            const searchPeople = (list, nextPage) => {
 
-                if (nextPageUrl) {
+                if (nextPage) {
 
-                    // const secureUrl = nextPageUrl.includes("https") ?
-                    //     nextPageUrl : nextPageUrl.replace("http", "https")
-
-                    request(nextPageUrl).then(page => {
+                    request(nextPage).then(page => {
 
                         fillList(list, page.results, personItem)
 
@@ -394,7 +383,6 @@ function updatePage(url) {
                 if (pageUrl) {
 
                     updatePage(pageUrl)
-                    // updatePage(pageUrl.replace("http", "https"))
 
                     nextBtn.removeEventListener("click", handleBtnEvent)
                     previousBtn.removeEventListener("click", handleBtnEvent)
