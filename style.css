@@ -65,12 +65,21 @@ nav {
 }
 
 .page-btn {
-    font-size: 5rem;
+    padding: 2rem;
     border-bottom: .25rem solid transparent;
+
+    background-size: contain;
     
     transition: 500ms;
 }
 
+.previous {
+    background-image: url("icons/arrow-left.png");
+}
+
+.next {
+    background-image: url("icons/arrow-right.png");
+}
 
 .page-btn:hover {
     border-bottom-color: #FF5722;
