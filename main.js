@@ -28,7 +28,7 @@ async function fetchHomeworld(url) {
         `climate: ${climate}`,
         `terrain: ${terrain}`,
     ]
-
+    
     const info = (list, data) => fillList(list, data, createListItem)
     const list = createList(info, properties)
 
@@ -58,7 +58,7 @@ async function fetchSpecies(url) {
         `Designation: ${designation}`,
         `Language: ${language}`,
         `Average height: ${average_height} ${unit(average_height, "cm")}`,
-        `Average lifespan: ${average_lifespan} ${unit(average_height, "years")}`,
+        `Average lifespan: ${average_lifespan} ${unit(average_lifespan, "years")}`,
     ]
 
     const info = (list, data) => fillList(list, data, createListItem)
@@ -92,7 +92,7 @@ function infoItem(property) {
 
     let { value, label, additional } = property
 
-    const propertyIsEmpty = () => value.constructor === Array && value.length < 1
+    const propertyValueIsEmpty = () => value.constructor === Array && value.length < 1
 
     const propertyValueIncludes = searchString =>
         typeof value === "string" ?
@@ -126,8 +126,9 @@ function infoItem(property) {
                 infoList.classList.add("info-list", "hidden")
 
                 valueContainer.replaceWith(infoList)
+
             })
-                .catch(error => console.log(error))
+            .catch(error => console.log(error))
 
             target.removeEventListener("click", handleFetchEvent)
         }
@@ -145,7 +146,7 @@ function infoItem(property) {
     let labelContainer = document.createElement("p")
     let valueContainer = document.createElement("p")
 
-    if (propertyIsEmpty()) {
+    if (propertyValueIsEmpty()) {
 
         valueContainer.append("unknown")
 
@@ -173,7 +174,7 @@ function infoItem(property) {
     }
     else {
 
-        valueContainer.append(value + additional)
+        valueContainer.append(`${value} ${isNaN(value) ? "" : additional}`)
 
     }
 
@@ -301,7 +302,7 @@ function updatePage(url) {
                         searchPeople(list, page.next)
 
                     })
-                        .catch(error => console.log(error))
+                    .catch(error => console.log(error))
                 }
             }
 
@@ -429,7 +430,7 @@ function updatePage(url) {
 
                     oldMenu.replaceWith(newMenu)
                 })
-                    .catch(error => console.log(error))
+                .catch(error => console.log(error))
             }
 
             const updateButtons = () => {
@@ -466,7 +467,7 @@ function updatePage(url) {
 
         }
     })
-        .catch(error => console.log(error))
+    .catch(error => console.log(error))
 }
 
 updatePage("https://swapi.dev/api/people/")
