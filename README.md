@@ -5,7 +5,8 @@ It's sort of a catalog over different characters in the Star Wars universe, wher
 
 Made with **plain Javascript**!
 
-**These are some reflections on my work (struggles and that sort of thing) that I scribbled down in conjunction with my application for the internship, that may be relevant to put here for those that are _really_ interested:**
+## Reflections
+These are some thoughts about my work (struggles and that sort of thing) that I scribbled down in conjunction with my application for the internship, that may be relevant to put here for those that are *really* interested:
 
 > I did struggle with getting my head around how to work with network requests through the SWAPI. This was one of the main areas that I felt that I never got a good basic understanding of during my Frontend education program. Which is unfortunate since it's a crucial area in web development as I understand it. So I had to spend quite a lot of time doing research on it - I initially tried to use some of the helper libraries provided in the SWAPI documentation, but to no avail. I got these CORS errors and wasn't sure how to get rid of those. So I decided this was a good opportunity to get my hands on the Fetch API as it seems like a popular and modern tool for fetching data via HTTP requests. Then I got confused about how to work with promises, so I had to spend time to get comfortable with this... etc - long story short is that I had to find out a satisfying way to retrieve network data, so I could integrate it in my application.
 >
