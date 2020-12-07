@@ -1,4 +1,4 @@
-# :sparkler: :sparkles: Star Wars Catalog :rocket:
+# :sparkles: Star Wars Catalog :rocket:
 A small project I did as a way to show off my coding skills in order to land an internship at [Redmind](https://redmind.se/).
 
 It's sort of a catalog over different characters in the Star Wars universe, where you're able to see personal details about each character. The details are fetched from [SWAPI](https://swapi.dev/).
